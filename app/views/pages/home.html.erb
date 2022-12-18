@@ -1,0 +1,80 @@
+<div id="main-content">
+  <div id="banner-section">
+    <div id="banner">
+      <div class="space" id="first"></div>
+      <div id="banner-left" class="container">
+        <video id="custom_video" class="desktop video-full-desktop" autoplay="" loop="" muted="" playsinline="">
+          <source src="https://cdn.shopify.com/videos/c/o/v/ccf0bdeada334a1791d8bbd4d4cb2047.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="space"></div>
+    </div>
+    <div id="banner-right">
+      <div class="container">
+        <div class="content">
+          <h1>Bullseye Studio</h1>
+          <p>A growing collective of California soul</p>
+          <%= link_to "Explore the studio", menu_path, id: "banner-button", class: "button" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="headline-one" class="shop-link">
+    <div id="headone-container" class="shop-link">
+      <div id="headone-content" class="shop-link">
+        <h1>All the BS without the BS.</h1>
+        <p>Take a look at the stunning art from our talented artists. Happy to respond to all inquiries or customization requests. Providing optional details (size, space, theme, etc.) is key to getting the perfect piece!</p>
+        <%= link_to "Shop All", menu_path, id: "banner-button", class: "button" %>
+      </div>
+    </div>
+  </div>
+
+  <div id="collection-section">
+    <div id="collection-container">
+        <div id="post-title">
+          <div id="post-title-container" class="container">
+            <h1>COOKIE MENU</h1>
+          </div>
+        </div>
+
+        <div id="post-container">
+          <%- if flash[:success].present? %>
+          <div id="success-update" class="post">
+            <p><%= flash[:success] %></p>
+          </div>
+          <% end %>
+          <% @chips.each_with_index do |chip, index| %>
+          <div id="post-<%= index+1 %>" class="post">
+            <div class="content">
+              <%= form_for(:item, :url => stripe_add_path) do |f| %>
+                <div class="field hidden-field">
+                  <%= f.hidden_field :name, value: chip.name %>
+                </div>
+                <div class="field hidden-field">
+                  <%= f.hidden_field :menu_id, value: chip.menu_id %>
+                </div>
+                <div class="field hidden-field">
+                  <%= f.hidden_field :image, value: chip.image %>
+                </div>
+                <h4><%= chip.name %></h4>
+                <p><%= chip.description %></p>
+                <div class="quantity-submit">
+                  <div id="quantity-counter-<%= index+1 %>" class="field quantity-counter">
+                    <%= f.label :quantity, "QUANTITY" %>
+                    <%= f.number_field :quantity, in: 1..12, step: 1, autocomplete: 1 %>
+                  </div>
+                  <div id="submit-<%= index+1 %>" class="actions">
+                    <%= f.submit "ADD TO CART" %>
+                  </div>
+                </div>
+
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
+
+</div>
