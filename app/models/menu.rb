@@ -1,5 +1,5 @@
 class Menu < ApplicationRecord
-    
-  has_many :chips
+
+  has_many :works
 
 end

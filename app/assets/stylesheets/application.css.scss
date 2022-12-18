@@ -52,10 +52,12 @@ html {
   font-size: 16px;
   color: #4A4A4A;
   background-color: #DEDFE1;
+  scroll-behavior: smooth;
 }
 
 #main-content {
   position: relative;
+  scroll-behavior: smooth;
   /*top: 4.5rem; To offset for fixed header. */
 }
 
@@ -84,17 +86,24 @@ header {
   position: fixed;
   width: 100%;
   height: 4.5rem;
-  border-bottom: 2px solid white;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.11),
-              0 2px 2px rgba(0,0,0,0.11),
-              0 4px 4px rgba(0,0,0,0.11),
-              0 6px 8px rgba(0,0,0,0.11),
-              0 8px 16px rgba(0,0,0,0.11);
-  background-color: rgba(241,241,241,0.6);
+  border-bottom: 1px solid rgba(241,241,241,0.1);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05),
+              0 2px 2px rgba(0,0,0,0.05),
+              0 4px 4px rgba(0,0,0,0.05),
+              0 6px 8px rgba(0,0,0,0.05),
+              0 8px 16px rgba(0,0,0,0.05);
+  background-color: rgba(241,241,241,0.15);
+  transition: background-color 200ms linear;
   z-index: 4;
 }
 
+header.opaque {
+  background-color: rgba(241,241,241,1);
+  transition: background-color 200ms linear;
+}
+
 header h1 {
+  font-family: 'Permanent Marker', sans-serif;
   position: absolute;
   bottom: 0;
   top: -0.75rem;
@@ -269,7 +278,7 @@ header .icon#heart {
 
   header .icon#bars {
     height: 20px;
-    filter: invert(99%) sepia(83%) saturate(90%) hue-rotate(192deg) brightness(110%) contrast(89%);
+    filter: invert(20%) sepia(2%) saturate(0%) hue-rotate(156deg) brightness(86%) contrast(85%);
   }
 
   header .icon#logout:hover,
@@ -473,7 +482,7 @@ header .icon#heart {
 }
 
 #banner-section .content h1 {
-  font-family: 'Permanent Marker', sans-serif
+  font-family: 'Permanent Marker', sans-serif;
   margin-bottom: 0;
   line-height: 2.5rem;
   display: none;
@@ -526,6 +535,10 @@ header .icon#heart {
   transition: all 100ms ease-out;
 }
 
+#banner-button.mobile {
+  display: none;
+}
+
 @media only screen and (max-width: 1100px) {
   #banner-section {
     border-bottom: 30px solid #f1f1f1;
@@ -572,21 +585,20 @@ header .icon#heart {
   #banner img.mobile {
     display: block;
   }
-
-  #banner-button {
-    visibility: hidden;
-  }
 }
 
-@media only screen and (max-width: 730px) {
+@media only screen and (max-width: 900px) {
+  video {
+    height: 60vh;
+    overflow-x: hidden;
+  }
+
   #main-content {
-    top: 3rem;
     position: sticky;
   }
 
   #banner-section {
     position: sticky;
-    top: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -600,13 +612,10 @@ header .icon#heart {
     background-color: rgba(241, 241, 241, 0.3);
     position: sticky;
     top: 0;
-    height: 300px;
+    height: 60vh;
     flex: 1;
     z-index: 4;
-  }
-
-  #banner {
-    height: 4rem;
+    min-width: 100vw;
   }
 
   #banner-left {
@@ -622,12 +631,14 @@ header .icon#heart {
 
   }
 
+  #banner-section .container {
+    height: 100%;
+  }
+
   #banner-section .content {
     flex-direction: row-reverse;
-    justify-content: flex-end;
-    align-items: flex-start;
     flex-wrap: wrap;
-    margin-top: 3rem;
+    margin: 6rem 0 0 0;
   }
 
   #banner-section .content h1 {
@@ -639,7 +650,6 @@ header .icon#heart {
   }
 
   #banner {
-    height: 50%;
     width: auto;
     position: fixed;
     z-index: -1;
@@ -677,40 +687,9 @@ header .icon#heart {
     position: sticky;
     top: 0;
   }
-
-  #banner-button {
-    visibility: visible;
-    display: none;
-  }
 }
 
 @media only screen and (max-width: 519px) {
-  #main-content {
-    width: 100%;
-    top: 0rem;
-  }
-
-  #banner-section {
-    border-top: none;
-  }
-
-  #banner {
-    height: 100vh;
-    width: auto;
-  }
-
-  #banner .container {
-    height: 100%;
-  }
-
-  #banner-button {
-    border-radius: 40px;
-    border-radius: 7px;
-    font-size: 1rem;
-  }
-}
-
-@media only screen and (max-width: 480px) {
   video {
     height: 100vh;
     max-width: none;
@@ -722,18 +701,31 @@ header .icon#heart {
     height: 100vh;
   }
 
+  #banner {
+    height: 100vh;
+    width: auto;
+  }
+
   #banner-section {
     border-top: none;
     height: 100vh;
+    touch-action: none;
+  }
+
+  #banner .container {
+    height: 100%;
   }
 
   #banner-section .content {
-    justify-content: flex-end;
+    justify-content: space-around;
+    align-items: center;
     height: 100vh;
   }
 
   #banner-section .content h1 {
     font-family: 'Alfa Slab One', sans-serif;
+    font-size: 2.5rem;
+    line-height: 2.25rem;
     z-index: 1;
     margin-top: 3rem;
     display: block;
@@ -746,6 +738,14 @@ header .icon#heart {
 
   #banner-button {
     font-size: 1rem;
+  }
+
+  #banner-button.desktop {
+    display: none;
+  }
+
+  #banner-button.mobile {
+    font-size: 1rem;
     color: #383838;
     font-weight: bold;
     margin: 0 auto;
@@ -753,6 +753,7 @@ header .icon#heart {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2rem;
   }
 
   #banner img.desktop {
@@ -770,7 +771,7 @@ header .icon#heart {
 
 
 
-/* Collection Section */
+/* Headline ONE Section */
 #headline-one {
   height: 40vh;
   width: 100vw;
@@ -784,7 +785,7 @@ header .icon#heart {
   align-items: center;
   justify-content: center;
   margin: 8rem auto;
-  margin-top: 0;
+  margin-top: 2rem;
   padding-top: 4rem;
 }
 
@@ -813,176 +814,68 @@ header .icon#heart {
   transition: all 100ms ease-out;
 }
 
-
-
-
-
-/* Newsletter Section */
-#newsletter-section {
-  background-color: white;
-  border-top: 100px solid #BEE04C;
-}
-
-#newsletter-section h1 {
-  color: gray;
-  text-shadow: -1px 1px 1px rgba(0,0,0,0.11),
-               -2px 2px 2px rgba(0,0,0,0.11),
-               -4px 4px 4px rgba(0,0,0,0.11);
-  letter-spacing: 4px;
-}
-
-#newsletter-section .container {
-  background-color: #f1f1f1;
-  padding: 3rem 0 7rem 0;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-#newsletter-section .content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  max-width: 466px;
-}
-
-#newsletter-section .content h1 strong {
-  color: darkslategray;
-  font-size: 3rem;
-}
-
-#newsletter-section .content span {
-  color: black;
-  margin-bottom: 1rem;
-}
-
-#newsletter-section .button {
-  margin: 2rem 1rem;
-  font-size: 1.25rem;
-  display: flex;
-  flex-wrap: wrap;
-  border: solid 3px darkslategray;
-  border-radius: 5px;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.11),
-              0 2px 2px rgba(0,0,0,0.11),
-              0 4px 4px rgba(0,0,0,0.11),
-              0 6px 8px rgba(0,0,0,0.11),
-              0 8px 16px rgba(0,0,0,0.11);
-}
-
-#newsletter-section input {
-  width: 300px;
-  border: 0;
-  font-size: 1rem;
-  font-family: "Permanent Marker", sans-serif;
-}
-
-#newsletter-section button {
-  color: darkslategray;
-  letter-spacing: 0.2rem;
-  padding: 0.5rem 1rem;
-  border: 0;
-  font-size: 1rem;
-  font-family: "Permanent Marker", sans-serif;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-}
-
-#newsletter-section button:hover {
-  color: white;
-  background-color: darkslategray;
-  cursor: pointer;
-}
-
-@media only screen and (min-width: 1101px) {
-  #newsletter-section .container {
-    background-image: none;
-    background-color: rgba(190, 224, 76, 0.2);
-  }
-}
-
-@media only screen and (max-width: 730px) {
-  #newsletter-section {
-    border-top: 20px solid #AE8C74;
+@media only screen and (max-width: 519px) {
+  #headline-one {
+    height: 30vh;
   }
 
-  #newsletter-section .container {
-    padding-bottom: 8rem;
-    padding: 3rem 0 8rem 0;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  #newsletter-section .container {
-    padding: 1.5rem 0 5rem 0;
-  }
-
-  #newsletter-section h1 {
-    font-size: 1.4rem;
-    text-shadow: none;
-    max-width: 240px;
-  }
-
-  #newsletter-section .content h1 strong {
-    font-size: 2.5rem;
-    text-shadow: -1px 1px 1px rgba(0,0,0,0.11),
-                 -2px 2px 2px rgba(0,0,0,0.11),
-                 -4px 4px 4px rgba(0,0,0,0.11);
-  }
-
-  #newsletter-section button {
-    font-size: 1rem;
-    color: darkslategray;
-    margin-left: 0.5rem;
-  }
-
-  #newsletter-section .content span {
+  #headline-one p {
     display: none;
   }
 
-  #newletter-section form {
-    height: 1rem;
-  }
-
-  #newsletter-section input.form-control {
-    width: 190px;
-    height: 30px;
-    border-radius: 6px;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.11),
-                0 2px 2px rgba(0,0,0,0.11),
-                0 4px 4px rgba(0,0,0,0.11),
-                0 6px 8px rgba(0,0,0,0.11),
-                0 8px 16px rgba(0,0,0,0.11);
-  }
-
-  #newsletter-section button {
-    font-size: 0.85rem;
-    letter-spacing: 0rem;
+  #headline-one a {
+    margin-top: 0;
   }
 }
 
-@media only screen and (max-width: 480px) {
-  #newsletter-section {
-    border-top: 0;
-    padding-top: 0;
-  }
 
-  #newsletter-section .container {
-    padding: 1.5rem 0 5rem 0;
-    background-color: rgba(230, 230, 230, 1);
-    border-left: 6px solid darkslategray;
-    border-right: 6px solid darkslategray;
-  }
 
-  #newsletter-section h1 {
-    font-family: 'Permanent Marker', sans-serif;
-    color: gray;
+
+
+
+/* Collection Section */
+#collection-section {
+  height: 80vh;
+  width: 100vw;
+  z-index: 15;
+  overflow-x: hidden;
+}
+
+#collection-section #work-title h1 {
+  font-family: "Castoro", sans-serif;
+  padding: 3rem;
+  text-align: center;
+}
+
+#collection-section #work-container {
+  width: 100%;
+}
+
+#collection-section .work {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 70%;
+  margin: 1rem auto;
+}
+
+#collection-section img {
+  max-width: 45%;
+  max-height: 50%;
+  margin: 1rem;
+}
+
+@media only screen and (max-width: 519px) {
+  #collection-section #work-title h1 {
+    font-size: 1.5rem;
   }
 }
+
+
+
+
+
 
 #spacing {
   height: 50px;
@@ -1094,4 +987,13 @@ footer strong:hover {
   footer {
     display: none;
   }
+}
+
+
+
+
+
+/* WOWjs */
+.wow {
+  visibility: hidden;
 }

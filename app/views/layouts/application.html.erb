@@ -7,17 +7,27 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- universal -->
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'semantic', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Castoro:ital@0;1&family=Corinthia:wght@400;700&family=Kaushan+Script&family=Orbitron:wght@900&family=Permanent+Marker&family=Russo+One&display=swap" rel="stylesheet" />
 
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- scroll reveal -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/animatecss/3.5.2/animate.min.css" />
+
+    <!-- slide swiper -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+
   </head>
 
   <body>
 
-    <header>
+    <header id="scroll-top">
       <div class="content">
 
         <%= link_to root_path, class: "desktop" do %>
@@ -33,9 +43,9 @@
               <p><%= current_user.email %><p>
             </li>
             <% end %>
-            <li><%= link_to "Events", menu_path %></li>
-            <li><%= link_to "Talent", about_path %></li>
-            <li><%= link_to "Shop", stripe_cart_path %></li>
+            <li><%= link_to "Events", about_path %></li>
+            <li><%= link_to "Talent", talent_path %></li>
+            <li><%= link_to "Shop", menu_path %></li>
             <li id="heart">
               <%= link_to "https://thetacderancode.com" do %>
                 <%= image_tag "heart-solid.svg", id: "heart", class: "icon" %>
@@ -65,9 +75,9 @@
                 </a>
               </li>
               <div class="dropdown-content">
-                <li><%= link_to "Events", menu_path %></li>
-                <li><%= link_to "Talent", about_path %></li>
-                <li><%= link_to "Shop", stripe_cart_path %></li>
+                <li><%= link_to "Events", about_path %></li>
+                <li><%= link_to "Talent", talent_path %></li>
+                <li><%= link_to "Shop", menu_path %></li>
               </div>
             </div>
           </ul>
@@ -93,6 +103,12 @@
       </div>
     </footer>
 
+
+    <!-- slide swiper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js"></script>
+    <%= javascript_pack_tag 'swiper' %>
+
+    <!-- jquery -->
     <script src="//cdn.jsdelivr.net/jquery/2.2.0/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/jquery.sidr/2.2.1/jquery.sidr.min.js"></script>
 

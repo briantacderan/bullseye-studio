@@ -1,16 +1,21 @@
 class PagesController < ApplicationController
 
   def home
-    @chips = Chip.all
+    @work = Work.all.limit(2)
     @user = current_user
   end
-    
+
   def menu
-    @og = Chip.where(menu_id: 1)
-    @new = Chip.where(menu_id: 2)
+    @lexi = Work.where(menu_id: 1)
+    @new = Work.where(menu_id: 2)
   end
 
   def about
+  end
+
+  def talent
+    @artsy = Menu.where(talent: 'artist')
+    @bussy = Menu.where(talent: 'business')
   end
 
 end

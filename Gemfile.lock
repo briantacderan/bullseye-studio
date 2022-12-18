@@ -212,6 +212,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    semantic-ui-sass (2.4.4.0)
+      sassc
     semantic_range (3.0.0)
     spring (4.1.0)
     sprockets (4.1.1)
@@ -276,6 +278,7 @@ DEPENDENCIES
   rails_12factor
   sass-rails (>= 6)
   selenium-webdriver
+  semantic-ui-sass (~> 2.4.4)
   spring
   sqlite3 (~> 1.5.4)
   stripe (~> 5.35.0)

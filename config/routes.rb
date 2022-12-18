@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :pages
   root 'pages#home'
   get 'about' => 'pages#about'
+  get 'talent' => 'pages#talent'
   get 'menu' => 'pages#menu'
   namespace :stripe do
     resources :checkouts

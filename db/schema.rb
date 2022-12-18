@@ -12,20 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2021_07_28_083741) do
 
-  create_table "chips", force: :cascade do |t|
-    t.string "name"
-    t.string "image"
-    t.string "wide"
-    t.string "description"
-    t.integer "menu_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["menu_id"], name: "index_chips_on_menu_id"
-  end
-
   create_table "menus", force: :cascade do |t|
-    t.string "season"
+    t.string "talent"
+    t.string "name"
     t.string "info"
+    t.string "city"
+    t.string "photo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -53,6 +45,18 @@ ActiveRecord::Schema.define(version: 2021_07_28_083741) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["stripe_id"], name: "index_users_on_stripe_id", unique: true
+  end
+
+  create_table "works", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.string "wide"
+    t.string "description"
+    t.integer "price"
+    t.integer "menu_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["menu_id"], name: "index_works_on_menu_id"
   end
 
 end

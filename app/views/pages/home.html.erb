@@ -13,14 +13,15 @@
       <div class="container">
         <div class="content">
           <h1>Bullseye Studio</h1>
-          <p>A growing collective of California soul</p>
-          <%= link_to "Explore the studio", menu_path, id: "banner-button", class: "button" %>
+          <p>A growing collective of the California soul</p>
+          <%= link_to "Explore the studio", menu_path, id: "banner-button", class: "button desktop" %>
+          <a href="#headline-one" id="banner-button" class="button mobile">Explore the studio</a>
         </div>
       </div>
     </div>
   </div>
 
-  <div id="headline-one" class="shop-link">
+  <div id="headline-one" class="shop-link wow fadeInLeft" data-wow-delay="0.25s>
     <div id="headone-container" class="shop-link">
       <div id="headone-content" class="shop-link">
         <h1>All the BS without the BS.</h1>
@@ -32,48 +33,58 @@
 
   <div id="collection-section">
     <div id="collection-container">
-        <div id="post-title">
-          <div id="post-title-container" class="container">
-            <h1>COOKIE MENU</h1>
+      <div id="collection-content">
+        <div id="work-title">
+          <div id="work-title-container" class="container">
+            <h1 class="wow fadeInRight" data-wow-delay="0.25s">This Week's Featured Artwork</h1>
           </div>
         </div>
 
-        <div id="post-container">
-          <%- if flash[:success].present? %>
-          <div id="success-update" class="post">
-            <p><%= flash[:success] %></p>
-          </div>
-          <% end %>
-          <% @chips.each_with_index do |chip, index| %>
-          <div id="post-<%= index+1 %>" class="post">
-            <div class="content">
-              <%= form_for(:item, :url => stripe_add_path) do |f| %>
-                <div class="field hidden-field">
-                  <%= f.hidden_field :name, value: chip.name %>
-                </div>
-                <div class="field hidden-field">
-                  <%= f.hidden_field :menu_id, value: chip.menu_id %>
-                </div>
-                <div class="field hidden-field">
-                  <%= f.hidden_field :image, value: chip.image %>
-                </div>
-                <h4><%= chip.name %></h4>
-                <p><%= chip.description %></p>
-                <div class="quantity-submit">
-                  <div id="quantity-counter-<%= index+1 %>" class="field quantity-counter">
-                    <%= f.label :quantity, "QUANTITY" %>
-                    <%= f.number_field :quantity, in: 1..12, step: 1, autocomplete: 1 %>
-                  </div>
-                  <div id="submit-<%= index+1 %>" class="actions">
-                    <%= f.submit "ADD TO CART" %>
-                  </div>
-                </div>
+        <div class="container section-wrapper">
+          <div id="swiper-1"
+               class="row swiper-container collection wow fadeInLeft"
+               data-wow-delay="0.45s">
+            <div id="work-container" class="swiper-wrapper scroll-point">
+              <% @work.each_with_index do |work, index| %>
+              <div id="work-<%= index+1 %>" class="work">
+                <%= image_tag work.image, class: "featured" %>
+                <div class="content">
 
+                  <%= form_for(:item, :url => stripe_add_path) do |f| %>
+                    <div class="field hidden-field">
+                      <%= f.hidden_field :name, value: work.name %>
+                    </div>
+                    <div class="field hidden-field">
+                      <%= f.hidden_field :menu_id, value: work.menu_id %>
+                    </div>
+                    <div class="field hidden-field">
+                      <%= f.hidden_field :image, value: work.image %>
+                    </div>
+                    <div class="field hidden-field">
+                      <%= f.hidden_field :quantity, value: 1 %>
+                    </div>
+                    <h4><%= work.name %></h4>
+                    <p><%= work.description %></p>
+                    <div class="quantity-submit">
+                      <div id="submit-<%= index+1 %>" class="actions">
+                        <%= f.submit "Purchase" %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
               <% end %>
             </div>
+            <div class="slider-buttons">
+              <button class="swiper-button-prev collection">Prev</button>
+              <button class="swiper-button-next collection">Next</button>
+            </div>
+
+            <div class="swiper-pagination collection"></div>
           </div>
-          <% end %>
         </div>
+      </div>
+
     </div>
   </div>
 

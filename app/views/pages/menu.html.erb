@@ -22,7 +22,7 @@
           </div>
           <% end %>
 
-          <% @new.each_with_index do |chip, index| %>
+          <% @lexi.each_with_index do |chip, index| %>
             <div id="post-<%= index+1 %>" class="post">
               <div class="content">
                 <%= form_for(:item, :url => stripe_add_path) do |f| %>
@@ -62,7 +62,7 @@
           </div>
           <% end %>
 
-          <% @og.each_with_index do |chip, index| %>
+          <% @new.each_with_index do |chip, index| %>
             <div id="post-<%= index+1 %>" class="post">
               <div class="content">
                 <%= form_for(:item, :url => stripe_add_path) do |f| %>
