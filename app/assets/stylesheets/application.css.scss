@@ -51,7 +51,7 @@ html {
   font-weight: normal;
   font-size: 16px;
   color: #4A4A4A;
-  background-color: #DEDFE1;
+  background-color: #F1F1F1;
   scroll-behavior: smooth;
 }
 
@@ -86,20 +86,36 @@ header {
   position: fixed;
   width: 100%;
   height: 4.5rem;
-  border-bottom: 1px solid rgba(241,241,241,0.1);
+  border-bottom: 1px solid rgba(241,241,241,0);
+  box-shadow: none;
+  background-color: rgba(241,241,241,0);
+  transition: background-color 200ms linear,
+              border-bottom 200ms linear,
+              box-shadow 200ms linear;
+  z-index: 20;
+}
+
+header.opaque {
+  background-color: rgba(241,241,241,0.95);
+  border-bottom: 1px solid rgba(241,241,241,0.15);
   box-shadow: 0 1px 1px rgba(0,0,0,0.05),
               0 2px 2px rgba(0,0,0,0.05),
               0 4px 4px rgba(0,0,0,0.05),
               0 6px 8px rgba(0,0,0,0.05),
               0 8px 16px rgba(0,0,0,0.05);
-  background-color: rgba(241,241,241,0.15);
-  transition: background-color 200ms linear;
-  z-index: 4;
+  transition: background-color 200ms linear,
+              border-bottom 200ms linear,
+              box-shadow 200ms linear;
 }
 
-header.opaque {
-  background-color: rgba(241,241,241,1);
-  transition: background-color 200ms linear;
+header nav.desktop ul {
+  opacity: 0.4;
+  transition: opacity 200ms linear;
+}
+
+header.opaque nav.desktop ul {
+  opacity: 1;
+  transition: opacity 200ms linear;
 }
 
 header h1 {
@@ -362,7 +378,8 @@ header .icon#heart {
     top: 0rem; /* To offset for fixed header. */
   }
 
-  header {
+  header,
+  header.opaque {
     border-bottom: none;
     background: none;
     box-shadow: none;
@@ -371,13 +388,17 @@ header .icon#heart {
   header h1 {
     width: 40%;
     color: #f5cdc9;
-    font-size: 1.85rem;
+    font-size: 0.7rem;
     opacity: 0.8;
     bottom: -5px;
     right: 0;
     left: 0.5rem;
-    z-index: 2;
     visibility: hidden;
+  }
+
+  header.opaque h1 {
+    visibility: visible;
+    display: block;
   }
 
   header .icon#name {
@@ -510,6 +531,7 @@ header .icon#heart {
 }
 
 #banner-button,
+#headone-button,
 .actions.button input {
   font-family: 'Orbitron', sans-serif;
   color: white;
@@ -587,35 +609,18 @@ header .icon#heart {
   }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 860px) {
   video {
     height: 60vh;
     overflow-x: hidden;
   }
 
   #main-content {
-    position: sticky;
+
   }
 
   #banner-section {
-    position: sticky;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    border-bottom: 3px solid rgba(230, 230, 230, 0.65);
-    box-shadow: 0 1px 1px rgba(0,0,0,0.11),
-                0 2px 2px rgba(0,0,0,0.11),
-                0 4px 4px rgba(0,0,0,0.11),
-                0 6px 8px rgba(0,0,0,0.11),
-                0 8px 16px rgba(0,0,0,0.11);
-    background-color: rgba(241, 241, 241, 0.3);
-    position: sticky;
-    top: 0;
-    height: 60vh;
-    flex: 1;
-    z-index: 4;
-    min-width: 100vw;
+
   }
 
   #banner-left {
@@ -650,10 +655,7 @@ header .icon#heart {
   }
 
   #banner {
-    width: auto;
-    position: fixed;
-    z-index: -1;
-    bottom: 600px;
+
   }
 
   #banner .container {
@@ -686,6 +688,11 @@ header .icon#heart {
   #banner-right {
     position: sticky;
     top: 0;
+  }
+
+  #banner-button.desktop {
+    margin-right: 0;
+    padding-left: 2rem;
   }
 }
 
@@ -773,9 +780,8 @@ header .icon#heart {
 
 /* Headline ONE Section */
 #headline-one {
-  height: 40vh;
+  height: 35vh;
   width: 100vw;
-  background-color: #F1F1F1;
 }
 
 #headone-content {
@@ -814,9 +820,37 @@ header .icon#heart {
   transition: all 100ms ease-out;
 }
 
+@media only screen and (max-width: 1100px) {
+  #headline-one {
+    height: 40vh;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  #headline-one {
+    margin-top: 5.5rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #headline-one {
+    margin-top: 5.5rem;
+  }
+
+  #headone-button {
+    margin-top: 5.5rem;
+    padding-top: 0;
+  }
+}
+
 @media only screen and (max-width: 519px) {
   #headline-one {
-    height: 30vh;
+    height: 20vh;
+  }
+
+  #headline-one h1 {
+    margin-top: 4rem;
+    margin-bottom: 0;
   }
 
   #headline-one p {
@@ -825,6 +859,10 @@ header .icon#heart {
 
   #headline-one a {
     margin-top: 0;
+  }
+
+  #headone-content {
+    padding-top: 0;
   }
 }
 
@@ -835,10 +873,10 @@ header .icon#heart {
 
 /* Collection Section */
 #collection-section {
-  height: 80vh;
+  height: 83vh;
   width: 100vw;
-  z-index: 15;
-  overflow-x: hidden;
+  overflow: hidden;
+  background-color: #DEDFE1;
 }
 
 #collection-section #work-title h1 {
@@ -851,12 +889,17 @@ header .icon#heart {
   width: 100%;
 }
 
-#collection-section .work {
+#collection-section #swiper-1.swiper {
+  width: 100vw;
+  height: 66.5vh;
+}
+
+#collection-section #swiper-1.swiper .swiper-slide.work {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  max-width: 70%;
+  max-width: 70vw;
   margin: 1rem auto;
 }
 
@@ -947,9 +990,9 @@ footer strong:hover {
 
 @media only screen and (max-width: 440px) {
   footer {
-    border-top: solid 3px rgba(43,25,12,0.1);
+    border-top: solid 1px rgba(43,25,12,0.1);
     padding: 0.5rem;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,0.2);
   }
 
   footer strong {

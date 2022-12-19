@@ -1,4 +1,4 @@
-var swiperOne = new Swiper('#swiper-1', {
+var swiperOne = new Swiper('.swiper', {
   slidesPerView: 1,
   spaceBetween: 20,
   effect: 'fade',

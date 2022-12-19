@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   def home
     @work = Work.all.limit(2)
     @user = current_user
+    @talent = Menu.all
   end
 
   def menu

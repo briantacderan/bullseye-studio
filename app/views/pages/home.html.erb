@@ -21,12 +21,12 @@
     </div>
   </div>
 
-  <div id="headline-one" class="shop-link wow fadeInLeft" data-wow-delay="0.25s>
+  <div id="headline-one" class="shop-link wow fadeInLeft" data-wow-delay="0.45s">
     <div id="headone-container" class="shop-link">
       <div id="headone-content" class="shop-link">
         <h1>All the BS without the BS.</h1>
         <p>Take a look at the stunning art from our talented artists. Happy to respond to all inquiries or customization requests. Providing optional details (size, space, theme, etc.) is key to getting the perfect piece!</p>
-        <%= link_to "Shop All", menu_path, id: "banner-button", class: "button" %>
+        <%= link_to "Shop All", menu_path, id: "headone-button", class: "button" %>
       </div>
     </div>
   </div>
@@ -42,11 +42,11 @@
 
         <div class="container section-wrapper">
           <div id="swiper-1"
-               class="row swiper-container collection wow fadeInLeft"
+               class="row swiper swiper-container collection wow fadeInLeft"
                data-wow-delay="0.45s">
             <div id="work-container" class="swiper-wrapper scroll-point">
               <% @work.each_with_index do |work, index| %>
-              <div id="work-<%= index+1 %>" class="work">
+              <div id="work-<%= index+1 %>" class="swiper-slide work">
                 <%= image_tag work.image, class: "featured" %>
                 <div class="content">
 
