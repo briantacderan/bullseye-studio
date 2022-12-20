@@ -1,0 +1,194 @@
+#talent-section #banner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: auto;
+  width: 100%;
+}
+
+#talent-section #banner-section img {
+  height: 100vh;
+  min-height: 100vh;
+  min-width: 100vw;
+  max-width: none;
+  width: auto;
+  border-right: none;
+  overflow: hidden;
+}
+
+#talent-section #banner-section img.mobile {
+  display: none;
+}
+
+#talent-section #banner-section #banner-right {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#talent-section #banner img.desktop::-webkit-scrollbar,
+#talent-section #banner img.mobile::-webkit-scrollbar,
+#talent-section #banner-section #banner-right::-webkit-scrollbar,
+#talent-section #banner #banner-right::-webkit-scrollbar {
+  display: none;
+}
+
+#talent-section #banner-section .content {
+  font-family: "Castoro", sans-serif;
+  max-width: none;
+  margin: 6rem 0 0 0;
+}
+
+#talent-section #banner-section .content p {
+  font-size: 1.5rem;
+  color: #383838;
+  line-height: 2rem;
+  max-width: none;
+  padding-right: 12rem;
+  padding-left: 3rem;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  margin: 6rem 0 0 0;
+}
+
+#banner-button,
+.actions.button input {
+  background-color: #F1F1F1;
+  color: #383838;
+  border: 5px solid #383838;
+  border-radius: 0;
+  font-size: 1rem;
+  width: 250px;
+  -webkit-text-stroke: none;
+  margin-right: 0;
+}
+
+#banner-button:hover,
+.actions.button input:hover {
+  color: #383838;
+  transition-duration: 50ms;
+  text-shadow: none;
+  -webkit-text-stroke: none;
+  transition: all 100ms ease-out;
+}
+
+#talent-section #talent #artists-content,
+#talent-section #talent #business-content {
+  display: flex;
+  flex-direction: row;
+  flex: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#talent-section #talent {
+  margin: 4rem auto 2rem auto;
+  max-width: 700px;
+}
+
+#talent-section #talent .team {
+
+}
+
+#talent-section #talent img {
+  border-radius: 100%;
+  max-height: 200px;
+}
+
+#talent-section #talent h3 {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+#talent-section #talent h4 {
+  font-family: "Permanent Marker", sans-serif;
+  margin-top: 0;
+}
+
+#talent-section #talent .artist,
+#talent-section #talent .minion {
+  margin: 1rem;
+  max-width: 35vw;
+}
+
+@media only screen and (max-width: 1100px) {
+  #talent-section #banner img.desktop {
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  #talent-section #banner-section img {
+    height: 60vh;
+  }
+
+  #talent-section #banner-section .content p {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    padding-top: 1rem;
+  }
+
+  #talent-section #banner-section .content a {
+
+  }
+}
+
+@media only screen and (max-width: 519px) {
+  #talent-section #banner-section img {
+    height: 100vh;
+    min-height: 100vh;
+    min-width: 100vw;
+    max-width: none;
+    width: auto;
+    border-right: none;
+    overflow: hidden;
+  }
+
+  #talent-section #banner-section img.desktop {
+    display: none;
+  }
+
+  #talent-section #banner-section img.mobile {
+    display: flex;
+  }
+
+  #talent-section #banner-section .content {
+    margin: 0;
+    align-items: flex-end;
+  }
+
+  #talent-section #banner-button {
+    width: 250px;
+  }
+
+  #talent-section #talent {
+    margin: 2rem auto 5rem auto;
+    padding-bottom: 4rem;
+    max-width: 70px;
+  }
+
+  #talent-section #talent img {
+    min-width: 1px;
+    width: 30vw;
+  }
+
+  #talent-section #banner-section .content p {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    padding-top: 0;
+    padding-right: 0;
+    margin: 0;
+  }
+
+  #talent-section #banner-section .content a {
+    margin-top: 12rem;
+    align-items: flex-end;
+  }
+
+  #talent-section #talent h3,
+  #talent-section #talent h4,
+  #talent-section #talent p {
+    font-size: 0.6rem;
+  }
+}

@@ -1,6 +1,27 @@
 <%= stylesheet_link_tag 'talent', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 <div id="talent-section">
+
+  <div id="banner-section">
+    <div id="banner">
+      <div class="space" id="first"></div>
+      <div id="banner-left" class="container wow fadeIn" data-wow-delay="3.5s">
+        <%= image_tag "#{$s3}backgrounds/soma.png", class: "artists desktop video-full-desktop" %>
+        <%= image_tag "#{$s3}backgrounds/soma-mobile.png", class: "artists mobile video-full-desktop" %>
+      </div>
+      <div class="space"></div>
+    </div>
+
+    <div id="banner-right">
+      <div class="container">
+        <div class="content wow fadeInLeft" data-wow-delay="1s">
+          <p class="wow fadeInLeft" data-wow-delay="1s">Bullseye Studio is a full service artist management agency, based in San Francisco. We procure unique and talented artists and showcase their work through SF local business partnerships with community events and other collective showcases.</p>
+          <a onclick="window.location='#talent';" id="banner-button" class="talent button wow fadeInUp" data-wow-delay="2s">The Bullseye team</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="talent-container">
 
     <div id="talent-content">
@@ -8,11 +29,11 @@
 
         <div id="artists-content" class="talent">
           <% @artsy.each_with_index do |artist, index| %>
-            <div id="artist-<%= index+1 %>" class="artist">
+            <div id="artist-<%= index+1 %>" class="team artist">
               <div class="content">
-                <%= image_tag artist.photo, class: "artists" %>
-                <h2><%= artist.name %></h2>
-                <h3><%= artist.city %></h3>
+                <%= image_tag "#{$s3}talent/#{artist.photo}", class: "artists" %>
+                <h3><%= artist.name %></h2>
+                <h4><%= artist.city %></h3>
                 <p><%= artist.info %></p>
               </div>
             </div>
@@ -21,11 +42,11 @@
 
         <div id="business-content" class="talent">
           <% @bussy.each_with_index do |minion, index| %>
-            <div id="minion-<%= index+1 %>" class="minions">
+            <div id="minion-<%= index+1 %>" class="team minion">
               <div class="content">
-                <%= image_tag minion.photo, class: "minions" %>
-                <h2><%= minion.name %></h2>
-                <h3><%= minion.city %></h3>
+                <%= image_tag "#{$s3}talent/#{minion.photo}", class: "minions" %>
+                <h3><%= minion.name %></h2>
+                <h4><%= minion.city %></h3>
                 <p><%= minion.info %></p>
               </div>
             </div>

@@ -29,3 +29,19 @@ window.onscroll = function() {
       nav.classList.remove("opaque");
   }
 }
+
+function preload(arrayOfImages) {
+  $(arrayOfImages).each(function(){
+    $('<img/>')[0].src = this;
+  });
+}
+
+const aws = 'https://bullseye-studio.s3.us-west-1.amazonaws.com/';
+
+preload([
+  `${aws}backgrounds/soma.png`,
+  `${aws}backgrounds/soma-mobile.png`,
+  `${aws}talent/lexi.png`,
+  `${aws}talent/bea.png`,
+  `${aws}talent/brian.png`
+])

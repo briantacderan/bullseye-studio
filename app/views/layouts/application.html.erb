@@ -27,11 +27,15 @@
 
   <body>
 
+    <!-- jquery -->
+    <script src="//cdn.jsdelivr.net/jquery/2.2.0/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.sidr/2.2.1/jquery.sidr.min.js"></script>
+
     <header id="scroll-top">
       <div class="content">
 
         <%= link_to root_path, class: "desktop" do %>
-          <%= image_tag "logo-background.svg", id: "background", class: "icon" %>
+          <%= image_tag "#{$s3}sprites/bullseye_logo.svg", id: "background", class: "icon" %>
           <h1>Bullseye Studio</h1>
         <% end %>
 
@@ -48,7 +52,7 @@
             <li><%= link_to "Shop", menu_path %></li>
             <li id="heart">
               <%= link_to "https://thetacderancode.com" do %>
-                <%= image_tag "heart-solid.svg", id: "heart", class: "icon" %>
+                <%= image_tag "#{$s3}sprites/heart-solid.svg", id: "heart", class: "icon" %>
               <% end %>
             </li>
           </ul>
@@ -59,19 +63,19 @@
             <li>
               <%- if current_user %>
               <%= link_to destroy_session_path(current_user), method: :delete, class: "mobile logout" do %>
-                <%= image_tag "logout.svg", id: "logout", class: "icon logout" %>
+                <%= image_tag "#{$s3}sprites/logout.svg", id: "logout", class: "icon logout" %>
               <% end %>
               <% end %>
             </li>
             <li id="heart">
               <%= link_to "https://thetacderancode.com", class: "mobile" do %>
-                <%= image_tag "heart-solid.svg", id: "heart", class: "icon" %>
+                <%= image_tag "#{$s3}sprites/heart-solid.svg", id: "heart", class: "icon" %>
               <% end %>
             </li>
             <div class="dropdown">
               <li>
                 <a class="mobile">
-                  <%= image_tag "bars-solid.svg", id: "bars", class: "icon dropbtn" %>
+                  <%= image_tag "#{$s3}sprites/bars-solid.svg", id: "bars", class: "icon dropbtn" %>
                 </a>
               </li>
               <div class="dropdown-content">
@@ -100,14 +104,9 @@
       </div>
     </footer>
 
-
     <!-- slide swiper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
     <%= javascript_pack_tag 'swiper' %>
-
-    <!-- jquery -->
-    <script src="//cdn.jsdelivr.net/jquery/2.2.0/jquery.min.js"></script>
-    <script src="//cdn.jsdelivr.net/jquery.sidr/2.2.1/jquery.sidr.min.js"></script>
 
   </body>
 </html>

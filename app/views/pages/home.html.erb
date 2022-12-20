@@ -36,18 +36,18 @@
       <div id="collection-content">
         <div id="work-title">
           <div id="work-title-container" class="container">
-            <h1 class="wow fadeInRight" data-wow-delay="0.25s">This Week's Featured Artwork</h1>
+            <h1 class="wow fadeInRight" data-wow-delay="1s">This Week's Featured Artwork</h1>
           </div>
         </div>
 
         <div class="container section-wrapper">
           <div id="swiper-1"
                class="row swiper swiper-container collection wow fadeInLeft"
-               data-wow-delay="0.45s">
+               data-wow-delay="1.5s">
             <div id="work-container" class="swiper-wrapper scroll-point">
               <% @work.each_with_index do |work, index| %>
               <div id="work-<%= index+1 %>" class="swiper-slide work">
-                <%= image_tag work.image, class: "featured" %>
+                <%= image_tag "#{$s3}sprites/#{work.image}", class: "featured" %>
                 <div class="content">
 
                   <%= form_for(:item, :url => stripe_add_path) do |f| %>
