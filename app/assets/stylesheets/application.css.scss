@@ -642,7 +642,7 @@ header .icon#heart {
     max-width: 730px;
     max-height: 730px;
     width: 200%;
-
+    overflow-x: hidden;
   }
 
   #banner-section .container {
@@ -837,13 +837,13 @@ header .icon#heart {
 
 @media only screen and (max-width: 860px) {
   #headline-one {
-    margin-top: 5.5rem;
+    margin-top: 5.5rem auto 3rem;
   }
 }
 
 @media only screen and (max-width: 600px) {
   #headline-one {
-    margin-top: 5.5rem;
+
   }
 
   #headone-button {
