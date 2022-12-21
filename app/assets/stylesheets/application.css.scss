@@ -196,7 +196,8 @@ header a.desktop:hover:first-of-type h1 {
 }
 
 header a.mobile,
-header nav.mobile {
+header nav.mobile,
+header #background.icon.mobile {
   display: none;
 }
 
@@ -410,8 +411,16 @@ header .icon#heart {
     z-index: 2;
   }
 
-  header .icon#background {
+  header #background.icon.mobile {
     visibility: visible;
+    display: block;
+    filter: invert(30%) sepia(21%) saturate(3730%) hue-rotate(312deg) brightness(92%) contrast(93%);
+    opacity: 0.75;
+  }
+
+  header #background.icon.desktop,
+  header a.desktop h1 {
+    display: none;
   }
 
   header li.head-status {
@@ -726,7 +735,7 @@ header .icon#heart {
   #banner-section .content {
     justify-content: space-around;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
   }
 
   #banner-section .content h1 {
